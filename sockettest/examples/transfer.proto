@@ -1,0 +1,5 @@
+message person {
+    required int32 bidPrice= 1;
+    required string itemPeriodId = 2;
+    required string priceType = 3;
+}

@@ -1,0 +1,15 @@
+// [START declaration]
+package ocr;
+// [END declaration]
+
+// [START messages]
+message DataPair {
+  required string data_path = 1;
+  required int32 data_label = 2;
+}
+
+message DataPairList {
+  repeated DataPair data_pair = 1;
+}
+// [END messages]
+

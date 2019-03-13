@@ -1,0 +1,8 @@
+message person {
+    required int32 id = 1;
+    required string name = 2;
+}
+
+message all_person {
+    repeated person Per = 1;
+}

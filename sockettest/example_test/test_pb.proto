@@ -1,0 +1,9 @@
+message student {
+    required int32 id = 1;
+    required string name = 2;
+    required int32 age = 3;
+}
+
+message all_student {
+    repeated student Stu = 1;
+}
