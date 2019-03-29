@@ -1,8 +1,8 @@
 # coding=utf-8
 
-import httplib, urllib
+import http.client, urllib
 import json
-from sockettest import convert
+from lianxi import convert
 import sys
 
 p=198
@@ -15,34 +15,34 @@ def  clientReq(p):
         params = urllib.urlencode(data)
         headers = {"Content-type": "application/x-www-form-urlencoded","Accept-Encoding":"gzip"}
 
-        httpClient = httplib.HTTPConnection('192.168.5.111', 8590, timeout=30)
+        httpClient = http.client.HTTPConnection('192.168.5.111', 8590, timeout=30)
         httpClient.request("POST", "/transfer/bid", params, headers)
         response = httpClient.getresponse()
         result = response.read()
-        print response.msg
-        print response.status
-        print response.reason
-        print "result:",type(result)#字符串
-        print result
+        print(response.msg)
+        print(response.status)
+        print(response.reason)
+        print("result:",type(result))#字符串
+        print(result)
 
         js =json.dumps(result)
-        print str(sys._getframe().f_lineno)+"        " +"js:", type(js)#字符串
+        print(str(sys._getframe().f_lineno)+"        " +"js:", type(js))#字符串
         jsonData = json.loads(js,encoding='UTF-8')
         j = convert.convert(json.loads(jsonData))
-        print str(sys._getframe().f_lineno)+"        " +"jsonData:", type(j)#字典
-        print str(sys._getframe().f_lineno)+"        " +"jsonData:",j
+        print(str(sys._getframe().f_lineno)+"        " +"jsonData:", type(j))#字典
+        print(str(sys._getframe().f_lineno)+"        " +"jsonData:",j)
         if j.get('d'):
             x = j.get('d')
-            print x#与40行值输出一样
-            print str(sys._getframe().f_lineno)+"        " +"d:",type(x)#字典
-            print str(sys._getframe().f_lineno)+"        " +"d:",j['d']
-            print str(sys._getframe().f_lineno)+"        " +"d:",type(j['d'])#字典
+            print(x)#与40行值输出一样
+            print(str(sys._getframe().f_lineno)+"        " +"d:",type(x))#字典
+            print(str(sys._getframe().f_lineno)+"        " +"d:",j['d'])
+            print(str(sys._getframe().f_lineno)+"        " +"d:",type(j['d']))#字典
             y = j['d']['list'][0]['bidPrice']
-            print str(sys._getframe().f_lineno)+"        " +'bidPrice:',y
-            print type(y)#int
+            print(str(sys._getframe().f_lineno)+"        " +'bidPrice:',y)
+            print(type(y))#int
             return y
-    except Exception, e:
-        print e
+    except Exception as e:
+        print(e)
     finally:
         if httpClient:
             httpClient.close()
@@ -51,9 +51,9 @@ def fun():
     global p
     #print sys._getframe().f_lineno+"        " +p
     y = clientReq(p)
-    print 'fghkjghdfgk:',y
+    print('fghkjghdfgk:',y)
     z = clientReq(y)
-    print z
+    print(z)
 
 if __name__ =='__main__':
     fun()

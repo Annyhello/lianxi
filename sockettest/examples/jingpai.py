@@ -3,7 +3,7 @@
 
 import socket
 import json
-from sockettest.examples import transfer_pb2
+# from sockettest.examples import transfer_pb2
 
 ip_port = ('192.168.5.111', 8590)
 s = socket.socket()
@@ -25,7 +25,7 @@ data={
 dat = json.dumps(data,indent=4)
 s.send(dat)
 da = s.recv(1024)
-print da
+print(da)
 # resDat = json.loads(dat)
 # print resDat
 # bidPrice = resDat.get("bidPrice")

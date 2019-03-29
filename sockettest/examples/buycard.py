@@ -12,8 +12,9 @@ class testStore(unittest.TestCase):
             print(r.text)
             self.assertEqual(int(r.json()['d']['cost']['num']),200)
             self.assertEqual(int(r.json()['d']['cost']['curr_num']), 4080)
-        except Exception,e:
-            print e
+        except Exception as e:
+            print(e)
+
 
 if __name__ =='__main__':
     unittest.main()
